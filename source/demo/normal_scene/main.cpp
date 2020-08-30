@@ -7,10 +7,15 @@ int main(int argc, char* argv[])
 		FsdkObj::MetaContext::getSingleton().space("md");
 	if (!space)
 	{
-		printf("load meta class fault!\n");
+		printf("load meta space fault!\n");
 		return -1;
 	}
 	FsdkObj::IMetaClass* mc = space->getClass("MetaDemo"); 
+	if (!mc)
+	{
+		printf("load meta class fault!\n");
+		return -1;
+	}
 	FsdkObj::VarList params;
 	params.resize(1);
 	typedef const char* CSTR;
