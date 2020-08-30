@@ -13,7 +13,7 @@ namespace md
 		~MetaDemo() { }
 
 		void print();
-		bool output();
+		int output(const char* tag);
 	private:
 		std::string m_outStr;
 	};

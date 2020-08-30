@@ -21,19 +21,21 @@ void MetaDemo::print()
 		return;
 	}
 	std::string content = m_outStr;
-	content += "called in MetaDemo::print";
+	content += " called in MetaDemo::print";
 	ipd->print(content.c_str());
 }
-bool MetaDemo::output()
+int MetaDemo::output(const char* tag)
 {
 	FSDKKERNEL_DEFINE_GLOBALPTR(pd, IPluginDemo, ipd);
 	if (!ipd)
 	{
 		printf("load plugin interface falut!\n");
-		return false;
+		return -1;
 	}
-	std::string content = m_outStr;
-	content += "called in MetaDemo::output";
+	std::string content = tag;
+	content += " called in MetaDemo::output";
 	ipd->print(content.c_str());
-	return true;
+	static int gCallNum = 0;
+	gCallNum++;
+	return gCallNum;
 }
