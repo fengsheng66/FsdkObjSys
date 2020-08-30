@@ -17,11 +17,11 @@ namespace pd
 		}
 		virtual const char* path() const
 		{
-			return "pd"; //namespace Ãû³Æ
+			return "pd"; //return namespace name
 		}
 		virtual const char* name() const
 		{
-			return "IPluginDemo"; //interface Ãû³Æ
+			return "IPluginDemo"; //return interface name
 		}
 
 		virtual void print(const char* content)

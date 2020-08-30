@@ -5,6 +5,13 @@
 
 using namespace md;
 
+//must define "using namespace md" in before;
+FSDKOBJ_REGISTERCLASS_BEGIN(MetaDemo, md)
+FSDKOBJ_REGISTERCLASS_CONSTRUCTOR(MetaDemo, const char*)
+FSDKOBJ_REGISTERCLASS_VOIDFUNC(MetaDemo, print, MetaDemo::print)
+FSDKOBJ_REGISTERCLASS_NOTVOIDFUNC(MetaDemo, output, MetaDemo::output)
+FSDKOBJ_REGISTERCLASS_END(MetaDemo)
+
 void MetaDemo::print()
 {
 	FSDKKERNEL_DEFINE_GLOBALPTR(pd, IPluginDemo, ipd);
@@ -30,10 +37,3 @@ bool MetaDemo::output()
 	ipd->print(content.c_str());
 	return true;
 }
-
-//必须在前面声明 using namespace md;
-FSDKOBJ_REGISTERCLASS_BEGIN(MetaDemo, md)
-FSDKOBJ_REGISTERCLASS_CONSTRUCTOR(MetaDemo, const char*)
-FSDKOBJ_REGISTERCLASS_VOIDFUNC(MetaDemo, print, MetaDemo::print)
-FSDKOBJ_REGISTERCLASS_NOTVOIDFUNC(MetaDemo, output, MetaDemo::output)
-FSDKOBJ_REGISTERCLASS_END(MetaDemo)
