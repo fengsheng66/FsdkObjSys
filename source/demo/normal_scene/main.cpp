@@ -2,7 +2,8 @@
 #include <FsdkObj/MetaContext.h>
 
 int main(int argc, char* argv[])
-{ 
+{
+	//construct object
 	const FsdkObj::MetaSpace *space =
 		FsdkObj::MetaContext::getSingleton().space("md");
 	if (!space)
@@ -26,6 +27,8 @@ int main(int argc, char* argv[])
 		printf("construct meta object fault!\n");
 		return -1;
 	}
+
+	//invoke method
 	FsdkObj::VarList args;
 	FsdkObj::VarProxy ret1;
 	if (!mc->invoke("print", obj, args, ret1))
@@ -43,6 +46,8 @@ int main(int argc, char* argv[])
 	}
 	int ivRetNum = ret2.getVar<int>();
 	printf("invoke output return %d!\n", ivRetNum);
+
+	//call static type
 	md::MetaDemo* mdImpl = dynamic_cast<md::MetaDemo*>(obj);
 	if (!mdImpl)
 	{
@@ -53,6 +58,8 @@ int main(int argc, char* argv[])
 	int retNum = mdImpl->output("555");
 	printf("call output return %d!\n", retNum);
 	delete mdImpl;
+
 	while (true) { }
+
 	return 0;
 }
